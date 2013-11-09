@@ -1,0 +1,20 @@
+<div class="highlight-content highlighted-image bottom-margin text-center cta-box light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="contenteditable" id="title">{{ ad.title }}</h1>
+                {% if ad.slogan %}
+                <p class="contenteditable" id="slogan">{{ ad.slogan }}</p>
+                {% endif %}
+                {% if ad.extra %}
+                <p class="contenteditable" id="extra">{{ ad.extra }}</p>
+                {% endif %}
+                {% if ad.action_url %}
+                <a class="btn btn-clean-light btn-lg animated-when-hover" data-animation-type="wobble"
+                   href="{{ ad.action_url }}">{{ ad.action_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

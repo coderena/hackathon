@@ -3,12 +3,11 @@ from __future__ import unicode_literals
 import codecs
 import logging
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.utils.decorators import method_decorator
 from django.views.generic import View, TemplateView
 import markdown
 import re
+from hackathon.models import Hackathon
 from hackathon.utils.helper import info_response, get_url_by_conf
 
 __author__ = 'tchen'
@@ -22,9 +21,33 @@ def redirect_user(user):
 class IndexView(TemplateView):
     template_name = 'hackathon/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['request'] = self.request
+
+        hackathon = Hackathon.objects.latest()
+        context['hackathon'] = hackathon
+
+        context['ad'] = {
+            'title': hackathon.name,
+            'slogan': hackathon.slogan,
+            'extra': 'Start at <span>%s</span>, finish at <span>%s</span>, 48-hour nonstop coding and shipping!',
+            'action_url': '/project/register/',
+            'action_text': 'Register!'
+        }
+
+        return context
 
 class SigninView(TemplateView):
     template_name = 'hackathon/signin.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SigninView, self).get_context_data(**kwargs)
+        context['ad'] = {
+            'title': 'Hackathon',
+        }
+
+        return context
 
     def post(self, request, *args, **kwargs):
         username = request.POST.get('username', '')

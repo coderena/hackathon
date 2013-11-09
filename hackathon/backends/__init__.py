@@ -1,1 +1,1 @@
-__author__ = 'tchen'
+from ldap_auth import LDAPBackend

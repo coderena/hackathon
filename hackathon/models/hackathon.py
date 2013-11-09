@@ -15,6 +15,7 @@ class Hackathon(models.Model):
         db_table = 'hackathon_hackathon'
         verbose_name = 'Hackathon'
         ordering = ['-created']
+        get_latest_by = 'created'
 
     name = models.CharField('Name', max_length=24, unique=True)
     slogan = models.CharField('Slogan', max_length=256)

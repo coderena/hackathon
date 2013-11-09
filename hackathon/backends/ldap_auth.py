@@ -35,8 +35,6 @@ class LDAPBackend(object):
         if ldap_auth(dn, password):
             try:
                 user = User.objects.get(username=username)
-                if not user.is_active:
-                    return None
             except User.DoesNotExist:
                 user = User(username=username, is_active=True)
                 user.save()
