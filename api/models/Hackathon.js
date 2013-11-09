@@ -8,12 +8,39 @@
 
 module.exports = {
 
-  attributes: {
-  	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
-  }
+    attributes: {
+
+        name: {
+            type: 'string',
+            required: true,
+            unique: true
+        },
+        template: {
+            type: 'string',
+            required: true,
+            defaultsTo: 'default'
+        },
+        slug: {
+            type: 'string',
+            unique: true
+        },
+        cover: {
+            type: 'string'
+        },
+        start: {
+            type: 'datetime'
+        },
+        end: {
+            type: 'datetime'
+        },
+        instruction: {
+            type: 'text'
+        },
+        admins: {
+            type: 'array'
+        }
+
+
+    }
 
 };

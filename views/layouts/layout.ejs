@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+            For demonstration purposes, the `title` is dynamically set here based on
+            your `sails.config.appName` to show that you can inject data into layouts
+            exactly the same way as with your other view templates.
+        -->
+        <title><%- title %></title>
+
+        <!-- Viewport mobile tag for sensible mobile support -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+        <link href="/css/app.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="/favicon.ico" rel="shortcut icon" />
+        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+    <!-- Include the view file for the current controller/route -->
+    <%- body %>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="footer-menu">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">License</a></li>
+                        <li><a href="#">Disaclaimer</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                    <div class="copyright">
+                        2013 &copy; Tyr Chen.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="footer-social">
+
+                        <li><a href="tyr.chen{#}gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+
+                        <li><a href="http://weibo.com/tchen82" target="_blank"><i class="icon-weibo"></i></a></li>
+
+                        <li><a href="http://github.com/tyrchen" target="_blank"><i class="icon-github"></i></a></li>
+
+                        <li><a href="http://linkedin.com/in/tyrchen/" target="_blank"><i class="icon-linkedin"></i></a></li>
+
+                        <li><a href="https://twitter.com/tyrchen" target="_blank"><i class="icon-twitter"></i></a></li>
+
+                        <li><a href="https://www.facebook.com/tyrchen" target="_blank"><i class="icon-facebook"></i></a></li>
+
+                        <li><a href="https://plus.google.com/114684266209262341260/" target="_blank"><i class="icon-google-plus"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="/js/app.min.js"></script>
+
+    </body>
+</html>
