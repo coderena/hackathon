@@ -7,6 +7,7 @@ import logging
 __author__ = 'tchen'
 logger = logging.getLogger(__name__)
 
+
 class Project(models.Model):
     class Meta:
         app_label = 'hackathon'

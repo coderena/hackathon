@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division, unicode_literals, print_function
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.core.management import BaseCommand
-import codecs
-import json
 import requests
+from hackathon.models import UserProfile
 
 __author__ = 'tchen'
 
@@ -17,16 +16,33 @@ class Command(BaseCommand):
 
     def process_user(self, item):
         u, created = User.objects.get_or_create(username=item['uid'])
-        if created:
-            u.set_password('abcd1234')
+        p, dummy = UserProfile.objects.get_or_create(user=u)
 
+        # save basic user info
         u.email = item['email']
         first, last = item['preferred_name'].rsplit(' ', 1)
         u.first_name = first
         u.last_name = last
         u.save()
-        print('User %s %s.' % (u.username, 'created' if created else 'updated'))
 
+        # save profile info
+        p.photo_url = item['photo_url']
+        p.cube = item['cube']
+        p.ext = item['extension']
+        p.mobile = item['mobile']
+        p.phone = item['phone']
+
+        try:
+            m_first, m_last = item['manager'].rsplit(' ', 1)
+            p.manager = User.objects.get(first_name=m_first, last_name=m_last)
+        except:
+            pass
+
+        p.address = item['address']
+        p.department = item['department']
+        p.save()
+
+        print('User %s %s.' % (u.username, 'created' if created else 'updated'))
 
     def handle(self, *args, **options):
         page = 1
