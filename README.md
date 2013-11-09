@@ -1,4 +1,4 @@
-hackathon
-=========
+Hackathon
+=============
 
-Hackathon software for company use
+Hackathon is a sails application that provide basic functionality to hold a Hackathon.
