@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load general_filters %}
+
+{% block title %}Hackathon - bring innovation in life{% endblock %}
+
+{% block extra_style %}
+
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+
+<div class="highlight-content highlighted-image bottom-margin text-center cta-box light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 contenteditable="true" id="title">SBU Hackathon 2.0</h1>
+                <p contenteditable="true" id="slogan">Bring innovation to life. 48 hours nonstop coding and shipping!</p>
+                <p>Start at <span contenteditable="true" id="start">Dec 9th, 2013</span>, Demo at <span id="end" contenteditable="true">Dec 10th, 2013</span> </p>
+                <a class="btn btn-clean-light btn-lg animated-when-hover" data-animation-type="wobble" href="#">SIGNUP NOW!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% include 'partials/separator.html' %}
+    <div class="iconed-features lift-on-hover style-1">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="iconed-feature">
+                    <div class="feature-icon-w">
+                        <i class="icon-eye-open"></i>
+                    </div>
+                    <h4>Show Your Talents</h4>
+                    <p>Build whatever you wanna build. It's your show time!</p>
+                    <div class="btn-show-on-parent-hover">
+                        <a class="read-more-link" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="iconed-feature">
+                    <div class="feature-icon-w">
+                        <i class="icon-user-md"></i>
+                    </div>
+                    <h4>Meet Hackers</h4>
+                    <p>Join this interesting party and know hackers around you.</p>
+                    <div class="btn-show-on-parent-hover">
+                        <a class="read-more-link" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="iconed-feature">
+                    <div class="feature-icon-w">
+                        <i class="icon-power-off"></i>
+                    </div>
+                    <h4>Be Your Own PLM</h4>
+                    <p>You give direction. You create the product.</p>
+                    <div class="btn-show-on-parent-hover">
+                        <a class="read-more-link" href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/separator.html' %}
+
+    <div class="row bottom-margin">
+        <div class="col-md-5">
+            <h2 class="header-lined">Latest Hackathon</h2>
+            <ul class="list-checkmarked text-bigger">
+                <li>This theme comes with a set of amazin wrappers for your images. If you are a web designer and want to showcase your websites - there is nothing better on a market than theme Earth.</li>
+                <li>Simply wrap the image with couple lines of html and you will have a gorgeous looking browser frame and a magnifiyng glass for showcasing your projects details.</li>
+            </ul>
+            <!-- %a.btn.btn-default{:href => "#"} Show me Example -->
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="relative-w">
+                <div class="loupe loupe-left loupe-large animated-when-visible animated fadeInLeft" data-animation-type="fadeInLeft">
+                    <img alt="" src="http://placehold.it/800x600" />
+                </div>
+                <div class="frame-browser animated-when-visible animated bounceInRight" data-animation-type="bounceInRight">
+                    <div class="frame-buttons">
+                        <div class="frame-button-close"></div>
+                        <div class="frame-button-max"></div>
+                        <div class="frame-button-min"></div>
+                    </div>
+                    <div class="frame-browser-image">
+                        <img alt="" src="http://placehold.it/800x600" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_script %}
+
+
+{% endblock %}

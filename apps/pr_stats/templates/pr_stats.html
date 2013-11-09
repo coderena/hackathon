@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ info.name }}{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block content %}
+    <div class="main" style="margin-top: 40px;">
+        <div class="container">
+            <div class="row">
+                <div class="span3 sidebar">
+                    <ul class="nav nav-list sidenav">
+                        <li><a href="#" class="instruction">Instruction</a></li>
+                        {% for category, group in categories.items %}
+                            <li class="dropdown-submenu">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {{ category }} ({{ group|length }})
+                                </a>
+
+                                {% if group %}
+                                <ul class="dropdown-menu">
+                                    {% for item in group %}
+                                        <li><a href="#{{item.name}}" data-name="{{ item.name }}" data-expr=
+                                                "{{ item.expr }}" data-url="{{ item.pr_url }}" class="query"
+                                                >{{ item.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="span9">
+                    <div class="instruction-container">
+                        <div class="well">
+                            <h3>Instructions</h3>
+                            <p>Please click the memu on the left bar to display cached charts. If you'd like to add
+                                your own charts, please copy & paste the GNATS query expression here. Have fun!</p>
+
+                            <form class="form-search">
+                                <input type="text" class="input-xxlarge search-query">
+                                <button type="button" class="btn">Query</button>
+                            </form>
+                        </div>
+
+                        {% for category, group in categories.items %}
+                            <h4>{{ category }} ({{ group|length }})</h4>
+
+                            <ul class="inline">
+                              {% for item in group %}
+                                  <li><a href="#{{item.name}}" data-name="{{ item.name }}" data-expr=
+                                          "{{ item.expr }}" data-url="{{ item.pr_url }}" class="query"
+                                          >{{ item.name }}</a></li> |
+                              {% endfor %}
+                            </ul>
+                            <hr/>
+                        {% endfor %}
+                    </div>
+                    <div class="chart-container hide">
+                        <h3 id="chart-name"></h3>
+                        <p>Expression: </p>
+                        <textarea id="chart-expr" readonly="readonly" style="width:100%; font-size: 10px;
+                        line-height: 1.4"></textarea>
+                        <div id="loading"><img src="{% static "pr_stats/img/loading1.gif" %}" /></div>
+                        <div id="charts"></div>
+                        <hr/>
+                        <form class="form-inline pull-right" id="delete-chart-form">
+                            <input type="text" class="input-large" placeholder="Confirm the name of the chart to
+                            delete" id="delete-chart-name">
+                            <button class="btn btn-danger" id="delete-chart">Delete this
+                                chart!</button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="save-query-dialog" class="modal hide fade" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Save the Query for future use!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" id="save-query-form">
+                            <div class="control-group">
+                                <label class="control-label" for="query-name">Name</label>
+                                <div class="controls">
+                                    <input type="text" id="query-name" placeholder="Provide a name for the query">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="query-category">Category</label>
+                                <div class="controls">
+                                    <select id="query-category">
+                                      {% for category, group in categories.items %}
+                                          <option>{{ category }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="query-expr">GNATS Expr</label>
+                                <div class="controls">
+                                    <textarea id="query-expr" style="width:350px; height: 180px;" readonly="readonly">
+
+                                    </textarea>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p id="query-info" class="warning"></p>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <button class="btn btn-primary" id="save-query-btn">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{% static "pr_stats/js/highcharts.js" %}"></script>
+    <script src="{% static "pr_stats/js/exporting.js" %}"></script>
+    <script src="{% static "pr_stats/js/utils.js" %}"></script>
+    <script src="{% static "pr_stats/js/charts.js" %}"></script>
+    <script src="{% static "pr_stats/js/pr_stats.js" %}"></script>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

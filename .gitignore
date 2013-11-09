@@ -1,20 +1,46 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+*.py[co]
+.tags
+.codeintel
 
-pids
-logs
-results
+# Packages
+*.egg
+*.egg-info
+dist build eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
 
-npm-debug.log
-node_modules
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Mr Developer
+.mr.developer.cfg
+
+# django static
+static/*
+media/*
+
+# db
+*.db*
+
+# pycharm
 .idea
-.tmp
 
-assets/styles/*.less
-assets/js/*.js
+# logs
+log/*
+
+#dict
+*.dict
+
+#tmp
+tmp/*
+
+*.DS_Store
+

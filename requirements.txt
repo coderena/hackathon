@@ -1,0 +1,16 @@
+beautifulsoup4
+django
+django-admin-bootstrapped
+django-extensions
+django-markdown
+django-tastypie
+django_ace
+gunicorn
+ipython
+misaka
+MySQL-python
+pillow
+python-dateutil
+python-ldap
+requests
+south

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ info.name }}{% endblock %}
+{% block extra_css %}
+    <style>
+        textarea { width: 100%; height: 200px;}
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="main" style="margin-top: 40px;">
+        <div class="container">
+            <h2>{{ info.name }} ({{ info.version }})</h2>
+            {% if not result %}
+            <p>{{ info.description }}</p>
+            <form action="" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+                <input type="submit" value="Compare" />
+            </form>
+            {% else %}
+                <pre>
+                {{ result|safe }}
+                </pre>
+                <input type="submit" value="Reload" id="id-reload"/>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+  <script lang="javascript">
+  $(function() {
+    $('#id-reload').click(function() {
+      location.reload();
+    });
+  });
+  </script>
+
+{% endblock %}
