@@ -156,7 +156,7 @@ AUTH_PROFILE_MODULE = 'hackathon.models.UserProfile'
 
 AUTHENTICATION_BACKENDS = (
     'hackathon.backends.LDAPBackend',
-    # 'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
