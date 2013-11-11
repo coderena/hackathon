@@ -1,8 +1,8 @@
 CHECK=\033[32m✔\033[39m
 DONE="\n${CHECK} Done.\n"
-ECHO=echo
 ROOT=assets
 
+ECHO=echo
 CSS_COMPRESSOR=lessc
 JS_COMPRESSOR=yuicompressor
 SYNC=rsync
