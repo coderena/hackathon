@@ -5,11 +5,42 @@ server {
   ssl_certificate_key /etc/nginx/ssl/server.key;
 
   server_name hackathon.jcnrd.us;
+
+  set $current_root "/home/dev/deployment/hackathon";
+  client_max_body_size 32m;
+
   access_log /var/log/nginx/hackathon.access.log;
   error_log /var/log/nginx/hackathon.error.log;
+  error_page 500 502 503 504 /500.html;
+
+  location /500.html {
+    root $current_root;
+  }
+
+  location /favicon.ico {
+    root $current_root;
+  }
+  location ~* \.(php|rar|zip|cgi|pl)$ {
+    #deny all;
+    return 404;
+  }
+
+  location ~* ^/media/ {
+    autoindex off;
+	root $current_root;
+	expires max;
+  }
+
+
+  location ~* ^/static/ {
+    autoindex off;
+	root $current_root;
+	expires 30d;
+  }
 
   location / {
     proxy_pass http://localhost:7020;
     include /etc/nginx/proxy_ssl_params;
   }
+
 }

@@ -42,7 +42,7 @@ nginx:
 deploy: depend collect configure supervisor nginx
 	@$(ECHO) $(DONE)
 
-collect: compress
+collect: 
 	@echo "\nCollecting static files..."
 	@python manage.py collectstatic -i scripts -i styles -i Makefile --noinput
 	@echo ${DONE}
